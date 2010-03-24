@@ -3,7 +3,8 @@ require 'lib/table'
 @table = Table.new
 @menu_choices = ["invalid", "add_player", "start_game"]
 def add_player
-  puts "Player Name:"
+  puts "Add A New Player"
+  puts "Name:"
   name = gets.chomp
   puts "Bankroll:"
   money = gets.chomp.to_i
@@ -11,6 +12,8 @@ def add_player
 end
 
 def start_game
+  add_player unless @table.empty?
+  puts "Let The Games Begin"
   while true
     break unless @table.play
   end

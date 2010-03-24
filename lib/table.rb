@@ -9,7 +9,10 @@ class Table
   end
   
   def deal(num_cards=2)
-    @shoe = Shoe.new if @shoe.re_shuffle?
+    if @shoe.re_shuffle?
+      @shoe = Shoe.new 
+      puts "Starting a New Shoe"
+    end
     @players.each{|player| player.deal(num_cards)}
     @dealer.deal(num_cards)
   end
