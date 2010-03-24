@@ -9,7 +9,14 @@ class Hand
   end
   
   def rank  
-    @cards.empty? ? 0 : @cards.map(&:rank_value).inject(:+)
+    aces = @cards.find_all{ |card| card.rank == :Ace }
+    total = @cards.empty? ? 0 : @cards.map(&:rank_value).inject(:+) 
+    return total if total < 22 && aces.empty?
+    while !aces.empty? && total > 21
+      total -= 10
+      aces.pop
+    end
+    total
   end
   
   def busted?
@@ -94,6 +101,10 @@ class Hand
   
   def can_double_down?
     @cards.size == 2
+  end
+  
+  def include?(rank)
+    @cards.map(&:rank).include?(rank)
   end
   
   def can_split?
