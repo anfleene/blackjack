@@ -33,14 +33,36 @@ class Player
   end
   
   def make_bet
+    self.more_money unless @money > 0
     return if @bet.to_i > 0 && repeat_current_bet?
-    puts "#{name} Place Your Bet"
+    puts "#{name} Place Your Bet(Available Bankroll is: #{@money})"
     input = gets.chomp.to_i
-    unless input > 0  
+    unless input > 0 && input <= @money
       puts "Invalid Input Please Try again"
-      input = self.make_bet 
+      input = self.make_bet
     end
     @bet = input
+  end
+  
+  def more_money
+    puts "Your Bankroll is empty"
+    puts "1.Leave Table"
+    puts "2.Insert Money"
+    input = gets.chomp.to_i
+    if(input == 1)
+      self.table.leave(self)
+    elsif(input == 2)
+      puts "Bankroll:"
+      input = gets.chomp.to_i
+      while(input <= 0)
+        puts "Invalid Input Please Try again"
+        input = gets.chomp.to_i
+      end
+      @money = input if input > 0
+    else
+      puts "Invalid Input Please Try again"
+      self.more_money
+    end
   end
   
   def repeat_current_bet?

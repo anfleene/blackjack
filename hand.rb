@@ -49,14 +49,19 @@ class Hand
     case
       when self.blackjack?
         @player.money += (@bet*1.5)
+        self.winner(@bet*1.5)
       when self.busted?
         @player.money -= @bet
+        self.loser(@bet)
       when self.dealer.busted?
         @player.money += @bet
+        self.winner(@bet)
       when self.rank < self.dealer.rank
         @player.money -= @bet
+        self.loser(@bet)
       when self.rank > self.dealer.rank
         @player.money += @bet
+        self.winner(@bet)        
     end
   end
   
@@ -90,6 +95,14 @@ class Hand
       string << "\n"
     end
     string << "-------------------------\n\n"
+  end
+  
+  def winner(ammount)
+    puts "#{@player}\n Winner: #{ammount}"
+  end
+  
+  def loser(ammount)
+      puts "#{@player}\n Loser: #{ammount}"
   end
   
   def options
