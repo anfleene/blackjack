@@ -7,4 +7,8 @@ class Shoe < Deck
     end
     self.shuffle!
   end
+  
+  def re_shuffle?
+    self.size < Deck.size
+  end
 end

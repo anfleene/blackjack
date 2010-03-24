@@ -6,25 +6,20 @@ class Card
   def initialize(rank, suit=nil)
     if suit.nil?
       @number = rank
-      @rank = rank % Rank.all.size
-      @suit = rank % Suit.all.size
+      @rank = Rank[rank % Rank.size]
+      @suit = Suit[rank % Suit.size]
     else
       @suit = suit
       @rank = rank
-      @number = (Rank.all.size * suit) + rank
+      @number = (Rank.size * Suit[suit]) + Rank.index(rank)
     end
   end
   
-  def rank_name
-    Rank[rank].to_s
-  end
-    
-    
-  def suit_name
-    Suit[suit].to_s
+  def rank_value
+    Rank[rank]
   end
   
   def to_s
-    "#{Rank[rank]} of #{Suit[suit]}"
+    "#{rank} of #{suit}"
   end
 end

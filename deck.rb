@@ -1,8 +1,12 @@
 require 'card'
 require 'randomizer'
 class Deck
+  
+  def self.size
+    52
+  end
   attr_accessor :cards
-  def initialize()
+  def initialize
     @cards = build_deck
   end
   
@@ -24,5 +28,9 @@ class Deck
   
   def next_card
     @cards.last
+  end
+  
+  def size
+    @cards.size
   end
 end
