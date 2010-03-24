@@ -1,6 +1,6 @@
-require 'card'
-require 'hand'
-require 'table'
+require 'lib/card'
+require 'lib/hand'
+require 'lib/table'
 class Player
   attr_accessor :hands, :name, :money, :bet
   

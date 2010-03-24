@@ -1,4 +1,4 @@
-require 'deck'
+require 'lib/deck'
 class Shoe < Deck
   def initialize(num_deck=6)
     @cards = []

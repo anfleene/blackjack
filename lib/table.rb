@@ -1,5 +1,5 @@
-require 'shoe'
-require 'dealer'
+require 'lib/shoe'
+require 'lib/dealer'
 class Table
   attr_accessor :shoe, :players, :dealer, :current_player
   def initialize

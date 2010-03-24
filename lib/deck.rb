@@ -1,5 +1,5 @@
-require 'card'
-require 'randomizer'
+require 'lib/card'
+require 'lib/randomizer'
 class Deck
   
   def self.size

@@ -1,4 +1,4 @@
-require 'player'
+require 'lib/player'
 class Dealer < Player
   def initialize(name=nil)
     super(name)

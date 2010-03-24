@@ -1,6 +1,6 @@
 class Card
-  require 'suit'
-  require 'rank'
+  require 'lib/suit'
+  require 'lib/rank'
   attr_accessor :suit, :rank, :number
   
   def initialize(rank, suit=nil)

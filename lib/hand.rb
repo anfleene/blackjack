@@ -1,4 +1,4 @@
-require 'dealer'
+require 'lib/dealer'
 class Hand
   attr_accessor :cards, :bet
   

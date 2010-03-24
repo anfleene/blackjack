@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
-require 'pp'
-require 'table'
+require 'lib/table'
 @table = Table.new
 @menu_choices = ["invalid", "add_player", "start_game"]
 def add_player
